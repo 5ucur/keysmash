@@ -10,5 +10,4 @@
  
 ## Known issues
 
- - The character z in the original string, is decoded as a backtick (`) instead of z. I think I know where this issue lies; I'll fix it soon.
  - The encoder doesn't preserve case. This one is intended behaviour.

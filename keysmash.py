@@ -103,9 +103,9 @@ the letters a-z.'''
     string = string.casefold()
     if len(string) == 1:
         if (code := abcd.index(code)) < 25 - abcd.index(string):
-            return chr(ord(string) + code)
+            return abcd[ord(string) + code - 97]
         else:
-            return chr(ord(string) + (code - 26))
+            return abcd[ord(string) + (code - 26) - 97]
     else:
         decode = []
         text = []
@@ -115,7 +115,8 @@ the letters a-z.'''
             else:
                 decode.append(element - 26)
         for a,b in zip(string, decode):
-            text.append(chr(ord(a) + b))
+            print(abcd[(ord(a) + b) - 97])
+            text.append(abcd[(ord(a) + b) - 97])
         return ''.join(text)
 
 if __name__ == "__main__":

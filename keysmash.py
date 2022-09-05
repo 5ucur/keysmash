@@ -5,10 +5,15 @@ trow = "qwertyuiop"
 mrow = "asdfghjkl"
 brow = "zxcvbnm"
 
-def encode_multiple(string, row=mrow, return_lists=False):
+def encode_multiple(
+        string: str,
+        row: str = mrow,
+        return_lists: bool = False
+    ) -> tuple[str, str] | tuple[list, list]:
     '''Encodes string using row. Preserves non-alphabet characters. Does not
-preserve case. Enable return_lists to return a nested list instead of continuous
-text.'''
+preserve case.
+
+Enable return_lists to return a nested list instead of continuous text.'''
     string = string.casefold()
     if len(string) == 1:
         return encode(string, row)
@@ -43,9 +48,14 @@ text.'''
         else:
             return ''.join(full), ''.join(code)
 
-def decode_multiple(encoded, code, in_lists=False):
-    '''Decodes encoded using code. Enable in_lists if working on a nested list
-instead of continuous text.'''
+def decode_multiple(
+        encoded: str | list,
+        code: str | list,
+        in_lists: bool = False
+    ) -> str:
+    '''Decodes encoded using code.
+
+Enable in_lists if working on a nested list instead of continuous text.'''
     if len(encoded) == 1:
         return decode(encoded, code)
     if in_lists:
@@ -82,7 +92,7 @@ instead of continuous text.'''
                 full.append(decode(''.join(string), decoder))
         return ''.join(full)
 
-def encode(string, row=mrow):
+def encode(string: str, row: str = mrow) -> tuple[str, str]:
     '''Encodes string into a keysmash in row. Does not preserve case. Strictly
 works only on strings containing only the letters a-z. The row is by default
 mrow (middle row), options are also trow and brow.'''
@@ -97,7 +107,7 @@ mrow (middle row), options are also trow and brow.'''
         code = ''.join([abcd[key] for key in diff])
     return smash, code
 
-def decode(string, code):
+def decode(string: str, code: str) -> str:
     '''Decodes string using code. Strictly works only on strings containing only
 the letters a-z.'''
     string = string.casefold()

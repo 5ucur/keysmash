@@ -8,4 +8,6 @@
  
  Decoding works similarly. The function takes in the encoded string and the code to decode it. The index of each of the code's characters in the alphabet is calculated, and if it exceeds the difference between 25 and the index of the corresponding encoded string's character, then a negative index is used (index minus 26). Then those indices are added to the characters of the encoded string, effectively cancelling out the difference between the original letters and the keysmash ones.
 
-The encoder doesn't preserve case. This is intended behaviour.
+ The encoder doesn't preserve case. This is intended behaviour.
+
+ As far as I can tell, this works similarly to a one-time pad substitution cipher.
